@@ -1,0 +1,91 @@
+﻿
+<div class="minus-container">
+    @{
+        ViewBag.Title = "RAD Dev US - Blog";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        ViewBag.selectedItem = "blog";
+    }
+    <script>
+  (function () {
+    $(".pubDate").remove();
+    $(".article").remove();
+
+  }());
+    </script>
+    <div class="row">
+
+        <h3 class="tight col-sm-3">
+            Articles
+            <span>
+                <a href="fakePathToRSS.xml">
+                    <img src="../images/rssfeedicon.jpg" width="16" height="16" />
+                </a>
+            </span>
+        </h3>
+
+        <div class="tight col-sm-3">(most recent article is loaded - click title to load others)</div>
+        <div class="tight col-sm-3">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- blogtop -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:320px;height:100px"
+                 data-ad-client="ca-pub-6286879032545261"
+                 data-ad-slot="6030258726"></ins>
+            <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    <p>
+        <div class="row">
+            <div class="leftcolumn col-sm-3 ">
+                @{
+                    foreach (var item in ViewBag.Articles)
+                    {
+
+                        <span class="pubDate">Published: @item.Created.ToString("yyyy-MM-dd")</span>
+            <p class="article list-unstyled" id="article_id_@item.Id" onmousedown="showPreview('@ViewBag.BlogPath@item.RelativeFilePath','article_id_@item.Id')">
+                @item.Title
+            </p>
+
+                    }
+                    if (ViewBag.currentArticle != null)
+                    {
+                        List<MyBlogEngine.Models.BlogArticle> localArticles = (List<MyBlogEngine.Models.BlogArticle>)ViewBag.Articles;
+                        ViewBag.currentArticle = localArticles.Find(x => x.Id == ViewBag.currentArticle);
+                        if (ViewBag.currentArticle == null)
+                        {
+                            // the id for the article wasn't valid so load the default;
+                            ViewBag.currentArticle = @ViewBag.Articles[0];
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.currentArticle = @ViewBag.Articles[0];
+                    }
+                }
+            </div>
+
+
+            <div class="rightcolumn col-sm-9"></div>
+
+            <script>
+    (function () {
+        
+        showPreview('@ViewBag.BlogPath@ViewBag.currentArticle.RelativeFilePath');
+    setSelectedArticle(@ViewBag.currentArticle.Id);
+    }());
+
+  function showPreview(article,element) {
+    $('.rightcolumn').load(article);
+    if (element != null) {
+      $(".article").css("background-color", "");
+      $("#" + element).css("background-color", "lightgrey");
+    }
+  }
+  function setSelectedArticle(articleId) {
+    $("#" + "article_id_" + articleId).css("background-color", "lightgrey");
+  }
+</script>
+
+

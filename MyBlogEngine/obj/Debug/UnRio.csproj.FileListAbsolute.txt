@@ -1,0 +1,6 @@
+C:\Users\user\Downloads\BasicMVC_allSource\UnRio\bin\Debug\UnRio.dll
+C:\Users\user\Downloads\BasicMVC_allSource\UnRio\bin\Debug\UnRio.pdb
+C:\Users\user\Downloads\BasicMVC_allSource\UnRio\obj\Debug\UnRio.csprojAssemblyReference.cache
+C:\Users\user\Downloads\BasicMVC_allSource\UnRio\obj\Debug\UnRio.csproj.CoreCompileInputs.cache
+C:\Users\user\Downloads\BasicMVC_allSource\UnRio\obj\Debug\UnRio.dll
+C:\Users\user\Downloads\BasicMVC_allSource\UnRio\obj\Debug\UnRio.pdb
